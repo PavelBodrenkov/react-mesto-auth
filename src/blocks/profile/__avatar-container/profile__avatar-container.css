@@ -1,0 +1,35 @@
+.profile__avatar-container {
+margin: 0;
+position: relative;
+border-radius: 50%;
+box-sizing: border-box;
+font-size: 0;
+transition: all 0.3s linear;
+}
+
+.profile__avatar-container:hover {
+  cursor: pointer;
+  opacity: 0.6;
+ }
+
+.profile__avatar-container::after {
+  content:'';
+  background-image: url('./../../../images/addPhotoAvatar.svg');
+  background-position: center;
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s linear;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.profile__avatar-container:hover:after {
+  visibility: visible;
+  opacity: 1;
+}

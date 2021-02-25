@@ -1,0 +1,27 @@
+.popup__data {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding:0 0 0 0;
+    height: 42.08px;
+    line-height: 17px;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 0px;
+    outline: none;
+}
+
+@media screen and (max-width: 500px) {
+    .popup__data {
+        font-size: 12px;
+        height: 29.08px;
+    }
+}
+
+/* .popup__data:focus {
+    border: 3px solid rgb(102, 128, 212);
+    border-radius: 3px;
+    box-shadow: 0 0 2px;
+} */
+

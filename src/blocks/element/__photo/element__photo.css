@@ -1,0 +1,28 @@
+.element__photo {
+    width: 282px;
+    height: 282px;
+    max-height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: block;
+   
+   
+}
+
+
+
+.button_type_photo {
+box-sizing: border-box;
+border: none;
+padding: 0;
+outline: none;
+cursor: pointer;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+transition: 0.25s linear;
+}
+
+.button_type_photo:hover {
+    box-shadow: 0 0 10px; 
+}

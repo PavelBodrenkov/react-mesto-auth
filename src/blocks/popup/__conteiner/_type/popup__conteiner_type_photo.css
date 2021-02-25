@@ -1,0 +1,6 @@
+@media screen and (max-width:500px) {
+    .popup__conteiner_type_photo {
+       width: calc(100% - 40px * 2);
+       height: 258px;
+    }
+}
