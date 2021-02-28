@@ -1,50 +1,58 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import * as mainAuth from '../components/mainAuth';
 
 
 
-class Register extends React.Component  {
-  constructor(props) {
-    super(props);
-    this.state ={
-      email: '',
-      password: ''
-    }
-    this.hendleChange = this.hendleChange.bind(this);
-    this.hendleSubmit = this.hendleSubmit.bind(this)
-  }
+function Register({openPopupDone, openPopupError}) {
+  const [dataUser, setDataUser] = useState({
+    password:'',
+    email:''
+  })
+  const history = useHistory()
   
-  hendleChange (e) {
+  function hendleChange(e) {
     const {name, value} = e.target
-    this.setState({
-      [name]:value
-    });
+    setDataUser({...dataUser, [name]: value});
+    console.log(e.target.value)
   }
 
-  hendleSubmit (e) {
+  function hendleSubmit(e) {
     e.preventDefault()
-    const {email, password} = this.state
-    mainAuth.register(password, email)
+     
+    
+    mainAuth.register(dataUser.password, dataUser.email).then((res) => {
+      console.log(res)
+        if(res) {
+          openPopupDone()
+          history.push('/sign-in')
+
+        }else {
+          openPopupError()
+        }
+    })
   }
 
-render () {
     return(
       <div className="register">
       <div className="register__container">
-        <form onSubmit={this.hendleSubmit} action="#" id="form_reset" className="register__form" name noValidate>
+        <form onSubmit={hendleSubmit} action="#" id="form_reset" className="register__form" name noValidate>
+          <div>
           <h2 className="register__title">Регистрация</h2>
-          <input onChange={this.hendleChange} className="register__input" type="email" name="email" placeholder="Email" value={this.state.email}></input>
-          <input onChange={this.hendleChange} className="register__input" type="password" name="password" placeholder="Пароль" value={this.state.password}></input>
+          <input onChange={hendleChange} className="register__input" type="email" name="email" placeholder="Email" value={dataUser.email}></input>
+          <input onChange={hendleChange} className="register__input" type="password" name="password" placeholder="Пароль" value={dataUser.password}></input>
+          </div>
+          <div className="register_type_button-container">
           <button className=" button button_type_register">Зарегистрироваться</button>
           <Link to={'/sing-in'} className="register__login">Уже зарегистрированы? Войти</Link>
+          </div>
         </form>
        
       </div>
     </div>
 
     )
-}
+
 }
 
 export default Register

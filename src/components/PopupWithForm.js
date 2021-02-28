@@ -10,20 +10,7 @@ function PopupWithForm({
   children,
   title
 }) {
-  useEffect(() => {
-    if (!isOpen) return null;
-    const closeESC = (evt) => {
-      if (evt.key === "Escape") {
-        onClose();
-      }
-    };
-    document.addEventListener("keydown", closeESC);
-
-    return () => {
-      document.removeEventListener("keydown", closeESC);
-    };
-  }, [isOpen, onClose]);
-
+  
   return (
     <div
       className={`popup popup_type_${name} ${isOpen && "popup_opened"}`}

@@ -11,9 +11,13 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
 import Register from './Register';
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Login from './Login';
 import ProtectedRoute from "./ProtectedRoute";
+import * as mainAuth from "../components/mainAuth";
+import ErrorPopup from "./ErrorPopup";
+import DonePopup from "./DonePopup"
+import Burger from "./Burger";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -30,6 +34,12 @@ function App() {
   const [delPopup, setDelPopup] = useState(false);
   const [cardToDelete, setCardToDelete] = useState({});
   const [loggedIn, setLoggedIn] = useState(false)
+  const history = useHistory();
+  const [userEmail, setUserEmail] = useState([])
+  const [registerMessage, setRegisterMessage] = useState(false)
+  const [doneRegMessage, setDoneMessage] = useState(false)
+  const [burgerhidden, setBurgerHidden] = useState("")
+  
 
   useEffect(() => {
     Promise.all([api.getInitialProfile(), api.getInitialCards()])
@@ -41,6 +51,8 @@ function App() {
         console.log(`Ошибка: ${err}`);
       });
   }, []);
+
+  
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((item) => item._id === currentUser._id);
@@ -96,12 +108,23 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function openPopupError() {
+    setRegisterMessage(true)
+  }
+
+  function openPopupDone() {
+    setDoneMessage(true)
+  }
+
   function closeAllPopup() {
     setIsEditProfilePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsPhotoPopupOpen(false);
     setDelPopup(false);
+    setRegisterMessage(false);
+    setDoneMessage(false);
+    
   }
 
   function escClose(event) {
@@ -156,19 +179,57 @@ function App() {
       .finally(() => setLoadingCard(false));
   }
 
-  
+  useEffect(() => {
+    tokenCheck()
+  }, [tokenCheck])
 
+  function hendleLogin () {
+    setLoggedIn(true)
+  }
+
+  function tokenCheck() {
+    if (localStorage.getItem("token")) {
+      console.log(localStorage.getItem("token"))
+      const token = localStorage.getItem("token")
+      console.log(token)
+     if (token) {
+        mainAuth.getContent(token).then((res) => {
+          console.log(res)
+          if (res) {
+            hendleLogin()
+            setUserEmail(res.data.email)
+            history.push("/main")
+            
+            console.log(res.data.email)
+          }
+        })
+      }
+        
+    }
+  }
+
+  useEffect(() => {
+   
+    const closeESC = (evt) => {
+      if (evt.key === "Escape") {
+        closeAllPopup();
+      }
+    };
+    document.addEventListener("keydown", closeESC);
+
+    return () => {
+      document.removeEventListener("keydown", closeESC);
+    };
+  }, [closeAllPopup]);
 
 
   return (
     <div className="page">
       <profileContext.Provider value={currentUser}>
-        <Header />
+        <Burger userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} burgerhidden={burgerhidden}/>
+        <Header userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} setBurgerHidden={setBurgerHidden} />
         <Switch>
-          {/* <Route path="/" exact>
-            {loggedIn ? <Redirect to="/main" /> : <Redirect to="sing-in" />}
-          </Route> */}
-          <ProtectedRoute
+         <ProtectedRoute
             path="/main"
             loggedIn={loggedIn}
             component={Main}
@@ -180,23 +241,15 @@ function App() {
             onCardDelete={hendleDeleteCard}
             cardsContext={cards}
           />
-            {/* <Route path="/main"> */}
-            {/* <Main
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onEditAvatar={handleEditAvatarClick}
-              onCardClick={handleCardClick}
-              onCardLike={handleCardLike}
-              onCardDelete={hendleDeleteCard}
-              cardsContext={cards}
-            /> */}
-            {loggedIn && <footer />}
-          {/* </Route> */}
+          <ProtectedRoute
+            path="/main"
+            component={Footer}
+          />
           <Route path="/sing-up">
-            <Register />
+            <Register openPopupDone={openPopupDone} openPopupError={openPopupError}/>
           </Route>
           <Route path="/sing-in">
-            <Login />
+            <Login hendleLogin={hendleLogin} openPopupError={openPopupError}/>
           </Route>
           <Route>
             {loggedIn ? (
@@ -248,7 +301,8 @@ function App() {
           closeOver={escClose}
           loading={loadingDelete}
         />
-      
+        <ErrorPopup closeOver={escClose} onClose={closeAllPopup} registerMessage={registerMessage} />
+        <DonePopup  closeOver={escClose} onClose={closeAllPopup} doneRegMessage={doneRegMessage}/>
       </profileContext.Provider>
     </div>
   );

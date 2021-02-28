@@ -1,17 +1,17 @@
 .button_type_register {
     width: 100%;
-    height: 50.15px;
+    height: 50px;
     background-color: white;
     color: black;
     border: 0;
     border-radius:  2px;
-    margin-top: 215px;
     font-size: 18px;
     line-height: 22px;
     text-align: center;
     cursor: pointer;
     transition: 0.25s linear;
-    flex: bottom;
+    box-sizing: border-box;
+
 
 }
 
@@ -19,10 +19,12 @@
     opacity: 0.8;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:340px) {
     .button_type_register {
-        margin-top: 22px;
-        height: 46px;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        
+        height:46px;
+        padding: 0;
     }}

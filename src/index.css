@@ -6,6 +6,12 @@
 @import url("./blocks/header/header.css");
 @import url("./blocks/header/__logo/header__logo.css");
 @import url("./blocks/header/__login/header__login.css");
+@import url("./blocks/header/hidden/hidden.css");
+@import url("./blocks/header/__exit/header__exit.css");
+@import url("./blocks/user-data/user-data.css");
+@import url("./blocks/header/__burger/header__burger.css");
+@import url("./blocks/header/__burger-menu/header__burger-menu.css");
+
 /*Profile*/
 @import url("./blocks/profile/profile.css");
 @import url("./blocks/profile/__avatar/profile__avatar.css");
@@ -56,7 +62,7 @@
 @import url("./blocks/popup/__data/_type/popup__data_type_name.css");
 @import url("./blocks/popup/__data/_type/popup__data_type_job.css");
 @import url("./blocks/button/_type/button_type_disabled.css");
-/*Login*/
+/*Register*/
 @import url("./blocks/register/register.css");
 @import url("./blocks/register/__container/register__container.css");
 @import url("./blocks/register/__title/register__title.css");
@@ -64,3 +70,16 @@
 @import url("./blocks/button/_type/button_type_register.css");
 @import url("./blocks/register/__form/register__form.css");
 @import url("./blocks/register/__login/register__login.css");
+@import url("./blocks/register/_type/_button-container/register_type_button-container.css");
+/*PopupError*/
+@import url("./blocks/error-popup/__iamges/error-popup__images.css");
+@import url("./blocks/error-popup/__lists/error-popup__lists.css");
+@import url("./blocks/error-popup/__title/error-popup__title.css");
+@import url("./blocks/error-popup/error-popup.css");
+@import url("./blocks/error-popup/__background/error-popup__background.css");
+@import url("./blocks/button/_type/button_type_error.css");
+/*DonePopup*/
+@import url("./blocks/done-popup/done-popup.css");
+@import url("./blocks/done-popup/__images/done-popup__images.css");
+@import url("./blocks/burger/_container/burger_container.css");
+@import url("./blocks/burger/__open/burger__open.css");

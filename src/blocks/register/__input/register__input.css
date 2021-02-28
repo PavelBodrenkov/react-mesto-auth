@@ -3,7 +3,7 @@
     box-sizing: border-box;
     border: 0;
     border-bottom: 2px solid #CCCCCC;
-    padding:0 0 0 0;
+    padding:0;
     height: 42.08px;
     color: white;
     font-weight: normal;
@@ -11,6 +11,7 @@
     margin-top: 20px;
     outline: none;
     background-color: black;
+    
 }
 
 @media screen and (max-width: 500px) {

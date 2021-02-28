@@ -7,3 +7,9 @@
     color: white;
     margin-top: 15px;
 }
+
+@media screen and (max-width:500px) {
+    .register__login {
+        margin-top: 20px; 
+    }
+}
