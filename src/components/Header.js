@@ -33,8 +33,10 @@ function toggleBurger() {
       <div className="user-data">{userEmail}</div>
       <Link onClick={signOut} to={'/main'} className="header__login">Выйти</Link>
       </div>
+      <div className={currentPath.search('/main') ? "hidden" : "header__burger-menu"}>
       <div onClick={toggleBurger} className={`header__burger-menu ${toggle ? '': 'active'}`}>
         <span></span>
+      </div>
       </div>
     </header>
   )
