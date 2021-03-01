@@ -1,8 +1,9 @@
     .burger_container {
         visibility: hidden;
         opacity: 0;
-        transition:  all 0.5s linear;
-        display: none;
+        transition:  all 0.25s linear;
+        height: 0px;
+     
     }
 
 

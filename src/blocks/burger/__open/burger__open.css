@@ -1,7 +1,7 @@
 .burger__open {
     visibility: hidden;
     opacity: 0;
-    transition: all 0.5s linear;
+    
     display: none;
 }
 
@@ -9,8 +9,11 @@
     .burger__open {
         visibility: visible;
         opacity: 1;
-        transition: all 0.5s linear;
-        display: block;
+        transition: all 0.25s linear;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 142px;
     }
 }
 

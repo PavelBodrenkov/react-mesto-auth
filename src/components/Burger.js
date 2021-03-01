@@ -17,7 +17,7 @@ function Burger({ userEmail, setUserEmail, setLogged, burgerhidden }) {
 
     return (
         <div className={`burger_container ${burgerhidden ? 'burger__open' : ''}`}>
-            <div className={currentPath.search('/main') ? "hidden" : "header__burger"}>
+            <div className={`header__burger ${burgerhidden ? 'burger__open' : ''}`}>
                 <div className="user-data">{userEmail}</div>
                 <Link onClick={signOut} to={'/main'} className="header__login">Выйти</Link>
             </div>
