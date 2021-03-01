@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/sing-in/static/css/main.64d0e5ff.chunk.css",
-    "main.js": "/sing-in/static/js/main.c545e57a.chunk.js",
-    "main.js.map": "/sing-in/static/js/main.c545e57a.chunk.js.map",
+    "main.css": "/sing-in/static/css/main.8d7f2dd4.chunk.css",
+    "main.js": "/sing-in/static/js/main.a0b9e9f6.chunk.js",
+    "main.js.map": "/sing-in/static/js/main.a0b9e9f6.chunk.js.map",
     "runtime-main.js": "/sing-in/static/js/runtime-main.0a2e3f40.js",
     "runtime-main.js.map": "/sing-in/static/js/runtime-main.0a2e3f40.js.map",
     "static/js/2.a7657513.chunk.js": "/sing-in/static/js/2.a7657513.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.867ff3b3.chunk.js": "/sing-in/static/js/3.867ff3b3.chunk.js",
     "static/js/3.867ff3b3.chunk.js.map": "/sing-in/static/js/3.867ff3b3.chunk.js.map",
     "index.html": "/sing-in/index.html",
-    "static/css/main.64d0e5ff.chunk.css.map": "/sing-in/static/css/main.64d0e5ff.chunk.css.map",
+    "static/css/main.8d7f2dd4.chunk.css.map": "/sing-in/static/css/main.8d7f2dd4.chunk.css.map",
     "static/js/2.a7657513.chunk.js.LICENSE.txt": "/sing-in/static/js/2.a7657513.chunk.js.LICENSE.txt",
     "static/media/index.css": "/sing-in/static/media/like.df0c9655.svg",
     "static/media/logo.c2821b38.svg": "/sing-in/static/media/logo.c2821b38.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.0a2e3f40.js",
     "static/js/2.a7657513.chunk.js",
-    "static/css/main.64d0e5ff.chunk.css",
-    "static/js/main.c545e57a.chunk.js"
+    "static/css/main.8d7f2dd4.chunk.css",
+    "static/js/main.a0b9e9f6.chunk.js"
   ]
 }
