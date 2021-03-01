@@ -42,7 +42,7 @@ function Register({openPopupDone, openPopupError}) {
           </div>
           <div className="register_type_button-container">
           <button className=" button button_type_register">Зарегистрироваться</button>
-          <Link to={'/sing-in'} className="register__login">Уже зарегистрированы? Войти</Link>
+          <Link to={'/sign-in'} className="register__login">Уже зарегистрированы? Войти</Link>
           </div>
         </form>
         </div>

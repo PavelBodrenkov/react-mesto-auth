@@ -10,7 +10,7 @@ function Burger({ userEmail, setUserEmail, setLogged, burgerhidden }) {
 
     function signOut() {
         localStorage.removeItem('token')
-        history.push('/sing-up')
+        history.push('/sign-up')
         setLogged(false)
         setUserEmail("")
     }

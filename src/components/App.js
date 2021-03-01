@@ -40,7 +40,6 @@ function App() {
   const [doneRegMessage, setDoneMessage] = useState(false)
   const [burgerhidden, setBurgerHidden] = useState("")
 
-
   useEffect(() => {
     Promise.all([api.getInitialProfile(), api.getInitialCards()])
       .then(([usersData, cards]) => {
@@ -51,8 +50,6 @@ function App() {
         console.log(`Ошибка: ${err}`);
       });
   }, []);
-
-
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((item) => item._id === currentUser._id);
@@ -124,7 +121,6 @@ function App() {
     setDelPopup(false);
     setRegisterMessage(false);
     setDoneMessage(false);
-
   }
 
   function escClose(event) {
@@ -169,9 +165,7 @@ function App() {
         setCards([res, ...cards]);
         if (res) {
           closeAllPopup()
-
         }
-
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
@@ -199,7 +193,6 @@ function App() {
             hendleLogin()
             setUserEmail(res.data.email)
             history.push("/main")
-
             console.log(res.data.email)
           }
         })
@@ -244,17 +237,17 @@ function App() {
             path="/main"
             component={Footer}
           />
-          <Route path="/sing-up">
+          <Route path="/sign-up">
             <Register openPopupDone={openPopupDone} openPopupError={openPopupError} />
           </Route>
-          <Route path="/sing-in">
+          <Route path="/sign-in">
             <Login hendleLogin={hendleLogin} openPopupError={openPopupError} />
           </Route>
           <Route>
             {loggedIn ? (
               <Redirect to="/main" />
             ) : (
-                <Redirect to="sing-in" />
+                <Redirect to="sign-in" />
               )
             }
           </Route>

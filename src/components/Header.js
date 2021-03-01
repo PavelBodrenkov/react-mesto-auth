@@ -12,7 +12,7 @@ function Header({ userEmail, setLogged, setUserEmail, setBurgerHidden }) {
 
   function signOut() {
     localStorage.removeItem('token')
-    history.push('/sing-up')
+    history.push('/sign-up')
     setLogged(false)
     setUserEmail("")
   }
@@ -27,8 +27,8 @@ function Header({ userEmail, setLogged, setUserEmail, setBurgerHidden }) {
   return (
     <header className="header line">
       <img src={logo} alt="логотип" className="header__logo" />
-      <Link className={currentPath.search('/sing-in') ? "hidden" : "header__login"} to={'/sing-up'} >Регистрация</Link>
-      <Link className={currentPath.search('/sing-up') ? "hidden" : "header__login"} to={'/sing-in'} >Войти</Link>
+      <Link className={currentPath.search('/sign-in') ? "hidden" : "header__login"} to={'/sign-up'} >Регистрация</Link>
+      <Link className={currentPath.search('/sign-up') ? "hidden" : "header__login"} to={'/sign-in'} >Войти</Link>
       <div className={currentPath.search('/main') ? "hidden" : "header__exit"}>
         <div className="user-data">{userEmail}</div>
         <Link onClick={signOut} to={'/main'} className="header__login">Выйти</Link>
