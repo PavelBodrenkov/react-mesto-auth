@@ -19,9 +19,10 @@ function Login({ hendleLogin, openPopupError }) {
     e.preventDefault()
     mainAuth.login(dataLogin.password, dataLogin.email).then((data) => {
       console.log(data)
-      if (data) {
-        setDataLogin({ password: '', email: '' })
+      if (data.token) {
         hendleLogin()
+        setDataLogin({ password: '', email: '' })
+        
         history.push('/main')
       } else {
         openPopupError()

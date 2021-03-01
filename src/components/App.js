@@ -190,9 +190,9 @@ function App() {
         mainAuth.getContent(token).then((res) => {
           console.log(res)
           if (res) {
-            hendleLogin()
             setUserEmail(res.data.email)
             history.push("/main")
+            hendleLogin()
             console.log(res.data.email)
           }
         })

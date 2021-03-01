@@ -32,7 +32,7 @@ export const login = (password, email) => {
         },
         body: JSON.stringify({ password, email })
     })
-        .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => res.json())
         .then((data) => {
             console.log(data)
             localStorage.setItem('token', data.token)

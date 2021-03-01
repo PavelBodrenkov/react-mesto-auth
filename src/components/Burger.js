@@ -6,7 +6,7 @@ function Burger({ userEmail, setUserEmail, setLogged, burgerhidden }) {
 
     const location = useLocation()
     const history = useHistory()
-    const currentPath = location.pathname
+    
 
     function signOut() {
         localStorage.removeItem('token')
