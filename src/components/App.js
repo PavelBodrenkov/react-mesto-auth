@@ -39,7 +39,7 @@ function App() {
   const [registerMessage, setRegisterMessage] = useState(false)
   const [doneRegMessage, setDoneMessage] = useState(false)
   const [burgerhidden, setBurgerHidden] = useState("")
-  
+
 
   useEffect(() => {
     Promise.all([api.getInitialProfile(), api.getInitialCards()])
@@ -52,7 +52,7 @@ function App() {
       });
   }, []);
 
-  
+
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((item) => item._id === currentUser._id);
@@ -124,7 +124,7 @@ function App() {
     setDelPopup(false);
     setRegisterMessage(false);
     setDoneMessage(false);
-    
+
   }
 
   function escClose(event) {
@@ -161,7 +161,7 @@ function App() {
       .finally(() => setLoadingAvatar(false));
   }
 
-  function handleAddPlaceSubmit({ name, link}) {
+  function handleAddPlaceSubmit({ name, link }) {
     setLoadingCard(true);
     api
       .postAddCard({ name: name, link: link })
@@ -183,7 +183,7 @@ function App() {
     tokenCheck()
   }, [tokenCheck])
 
-  function hendleLogin () {
+  function hendleLogin() {
     setLoggedIn(true)
   }
 
@@ -192,24 +192,23 @@ function App() {
       console.log(localStorage.getItem("token"))
       const token = localStorage.getItem("token")
       console.log(token)
-     if (token) {
+      if (token) {
         mainAuth.getContent(token).then((res) => {
           console.log(res)
           if (res) {
             hendleLogin()
             setUserEmail(res.data.email)
             history.push("/main")
-            
+
             console.log(res.data.email)
           }
         })
+          .catch((err) => console.log(err))
       }
-        
     }
   }
 
   useEffect(() => {
-   
     const closeESC = (evt) => {
       if (evt.key === "Escape") {
         closeAllPopup();
@@ -226,10 +225,10 @@ function App() {
   return (
     <div className="page">
       <profileContext.Provider value={currentUser}>
-        <Burger userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} burgerhidden={burgerhidden}/>
+        <Burger userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} burgerhidden={burgerhidden} />
         <Header userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} setBurgerHidden={setBurgerHidden} />
         <Switch>
-         <ProtectedRoute
+          <ProtectedRoute
             path="/main"
             loggedIn={loggedIn}
             component={Main}
@@ -246,21 +245,20 @@ function App() {
             component={Footer}
           />
           <Route path="/sing-up">
-            <Register openPopupDone={openPopupDone} openPopupError={openPopupError}/>
+            <Register openPopupDone={openPopupDone} openPopupError={openPopupError} />
           </Route>
           <Route path="/sing-in">
-            <Login hendleLogin={hendleLogin} openPopupError={openPopupError}/>
+            <Login hendleLogin={hendleLogin} openPopupError={openPopupError} />
           </Route>
           <Route>
             {loggedIn ? (
               <Redirect to="/main" />
             ) : (
-              <Redirect to="sing-in" />
-            )
+                <Redirect to="sing-in" />
+              )
             }
           </Route>
         </Switch>
-              
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopup}
@@ -302,7 +300,7 @@ function App() {
           loading={loadingDelete}
         />
         <ErrorPopup closeOver={escClose} onClose={closeAllPopup} registerMessage={registerMessage} />
-        <DonePopup  closeOver={escClose} onClose={closeAllPopup} doneRegMessage={doneRegMessage}/>
+        <DonePopup closeOver={escClose} onClose={closeAllPopup} doneRegMessage={doneRegMessage} />
       </profileContext.Provider>
     </div>
   );

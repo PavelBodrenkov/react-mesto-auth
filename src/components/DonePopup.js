@@ -1,8 +1,8 @@
 import React from "react"
 
-function DonePopup({doneRegMessage, onClose, closeOver}) {
+function DonePopup({ doneRegMessage, onClose, closeOver }) {
 
-    return(
+    return (
         <div onClick={closeOver} className={`error-popup popup ${doneRegMessage && "popup_opened"}`}>
             <ul className="error-popup__lists">
                 <li className="done-popup__images"></li>
@@ -11,7 +11,6 @@ function DonePopup({doneRegMessage, onClose, closeOver}) {
             </ul>
         </div>
     )
-    
 }
 
 export default DonePopup

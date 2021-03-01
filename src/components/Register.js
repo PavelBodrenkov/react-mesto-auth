@@ -18,19 +18,17 @@ function Register({openPopupDone, openPopupError}) {
   }
 
   function hendleSubmit(e) {
-    e.preventDefault()
-     
-    
+    e.preventDefault() 
     mainAuth.register(dataUser.password, dataUser.email).then((res) => {
       console.log(res)
         if(res) {
           openPopupDone()
           history.push('/sign-in')
-
         }else {
           openPopupError()
         }
     })
+    .catch((err) => console.log(err))
   }
 
     return(
@@ -47,10 +45,8 @@ function Register({openPopupDone, openPopupError}) {
           <Link to={'/sing-in'} className="register__login">Уже зарегистрированы? Войти</Link>
           </div>
         </form>
-       
-      </div>
+        </div>
     </div>
-
     )
 
 }
