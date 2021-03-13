@@ -19,6 +19,7 @@ import ErrorPopup from "./ErrorPopup";
 import DonePopup from "./DonePopup"
 import Burger from "./Burger";
 
+
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -175,7 +176,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck()
-  }, [tokenCheck])
+  }, [])
 
   function hendleLogin() {
     setLoggedIn(true)
@@ -212,7 +213,7 @@ function App() {
     return () => {
       document.removeEventListener("keydown", closeESC);
     };
-  }, [closeAllPopup]);
+  }, []);
 
 
   return (
