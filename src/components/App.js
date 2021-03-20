@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
 import { useEffect, useState } from "react";
 import api from "../utils/api";
-import { profileContext } from "./../contexts/CurrentUserContext";
+import { ProfileContext } from "./../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
@@ -218,7 +218,7 @@ function App() {
 
   return (
     <div className="page">
-      <profileContext.Provider value={currentUser}>
+      <ProfileContext.Provider value={currentUser}>
         <Burger userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} burgerhidden={burgerhidden} />
         <Header userEmail={userEmail} setUserEmail={setUserEmail} setLogged={setLoggedIn} setBurgerHidden={setBurgerHidden} />
         <Switch>
@@ -295,7 +295,7 @@ function App() {
         />
         <ErrorPopup closeOver={escClose} onClose={closeAllPopup} registerMessage={registerMessage} />
         <DonePopup closeOver={escClose} onClose={closeAllPopup} doneRegMessage={doneRegMessage} />
-      </profileContext.Provider>
+      </ProfileContext.Provider>
     </div>
   );
 }

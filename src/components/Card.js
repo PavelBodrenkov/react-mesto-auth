@@ -1,8 +1,8 @@
 import React from "react";
-import { profileContext } from "./../contexts/CurrentUserContext";
+import { ProfileContext } from "./../contexts/CurrentUserContext";
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
-  const currentUser = React.useContext(profileContext);
+  const currentUser = React.useContext(ProfileContext);
 
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = `button button_type_delete ${isOwn ? "button_type_delete" : "button_type_delete-hidden"
