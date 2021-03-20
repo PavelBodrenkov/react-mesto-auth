@@ -176,7 +176,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck()
-  }, [])
+  }, [loggedIn])
 
   function hendleLogin() {
     setLoggedIn(true)
