@@ -248,7 +248,7 @@ function App() {
             {loggedIn ? (
               <Redirect to="/main" />
             ) : (
-                <Redirect to="sign-in" />
+                <Redirect to="/sign-in" />
               )
             }
           </Route>
